@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <section class="header">
+        <h2>ClimaTrack</h2>
+        <button>Classic/Noir</button>
+    </section>
+
+    <section class="row">
+        <section class="left-column">
+            <form class="location">
+                <input type="text" placeholder="Kathmandu">
+                <button type="submit">Search</button>
+            </form>
+            
+            <div class="left-column-details">
+                <div class="temp">26&deg;C</div>
+                <div class="weather">Mostly Cloudy</div>
+                <div class="highest-temp"></div>
+                <div class="lowest-temp"></div>
+                <div class="current-date"></div>
+                <div class="current-time"></div>
+                <div class="current-location"></div>
+                <div class="current-lat"></div>
+                <div class="current-long"></div>
+            </div>
+        </section>
+        <section class="right-column">
+            <div class="card">
+                <div class="map"></div>
+            </div>
+            <div class="card">
+                <div class="hourly-temp">
+                    <h2>Hourly Temperature</h2>
+                </div>
+            </div>
+            <div class="card third-card">
+                <div class="third-card-inner uv-index">
+                    <div class="title">UV Index</div>
+                    <div class="uv-data"></div>
+                </div>
+                <div class="third-card-inner air-visibility">
+                    <div class="title">Air Visibility</div>
+                    <div class="air-data"></div>
+                </div>
+                <div class="third-card-inner wind-status">
+                    <div class="title">Wind Status</div>
+                    <div class="wind-data"></div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section class="footer">
+        <span>Licensed by MIT.</span>
+    </section>
+    
+    <script src="/script.js"></script>
+</body>
+</html>
