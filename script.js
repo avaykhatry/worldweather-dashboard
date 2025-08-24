@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const lon = 85.300140;
 
   fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=sunrise,sunset&hourly=temperature_2m`
+    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=sunrise,sunset&hourly=temperature_2m&current=rain,wind_speed_10m,wind_direction_10m,weather_code`
   )
     .then((Response) => {
       if (!Response.ok) throw new Error(`HTTP error: ${Response.status}`);
@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
       // sunrise time
       const sunriseTime = document.querySelector("#sunrise-time");
       sunriseTime.innerHTML = data.daily.sunrise[1];
+
+      // rain info
+      const rainInfo = document.querySelector("#rain");
+      rainInfo.innerHTML = data.current.rain;
+
     })
     .catch((error) => console.error(`Error: ${error}`));
 });
