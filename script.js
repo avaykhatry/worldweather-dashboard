@@ -10,15 +10,24 @@ document.addEventListener("DOMContentLoaded", function () {
       return Response.json();
     })
     .then((data) => {
-      console.log(data.hourly);
+      console.log(data);
+
+      // current Time
       const currentTime = "2025-08-24T14:00";
+      const splicedCurrentTime = "2025-08-24";
       const indexOfCurrentTime = data.hourly.time.indexOf(currentTime);
+
+      // current temperature
       currentTemp = data.hourly.temperature_2m[indexOfCurrentTime];
       console.log(indexOfCurrentTime);
       console.log(currentTemp);
 
       const temp = document.querySelector("#temp");
       temp.innerHTML = currentTemp;
+
+      //sunset-time
+      const sunsetTime = document.querySelector("#sunset-time");
+      sunsetTime.innerHTML = data.daily.sunset[0];
     })
     .catch((error) => console.error(`Error: ${error}`));
 });
