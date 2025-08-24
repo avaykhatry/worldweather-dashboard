@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
       //sunset-time
       const sunsetTime = document.querySelector("#sunset-time");
       sunsetTime.innerHTML = data.daily.sunset[0];
+
+      // sunrise time
+      const sunriseTime = document.querySelector("#sunrise-time");
+      sunriseTime.innerHTML = data.daily.sunrise[1];
     })
     .catch((error) => console.error(`Error: ${error}`));
 });
