@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const lon = 85.300140;
 
   fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=sunrise,sunset&hourly=temperature_2m&current=rain,wind_speed_10m,wind_direction_10m,weather_code`
+    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
   )
     .then((Response) => {
       if (!Response.ok) throw new Error(`HTTP error: ${Response.status}`);
@@ -13,17 +13,25 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(data);
 
       // current Time
-      const currentTime = "2025-08-24T14:00";
-      const splicedCurrentTime = "2025-08-24";
-      const indexOfCurrentTime = data.hourly.time.indexOf(currentTime);
+      const currentDate = "2025-08-25";
+      const currentDateTime = "2025-08-25T10:00"
+      // const splicedCurrentTime = "2025-08-25";
+      const indexOfCurrentDate = data.daily.time.indexOf(currentDate);
+      const indexOfCurrentDateTime = data.hourly.time.indexOf(currentDateTime);
+      console.log(indexOfCurrentDate);
 
-      // current temperature
-      currentTemp = data.hourly.temperature_2m[indexOfCurrentTime];
-      console.log(indexOfCurrentTime);
-      console.log(currentTemp);
+      //current temp
+      const currentTemp = document.querySelector("#current-temp");
+      currentTemp.innerHTML = data.hourly.temperature_2m[indexOfCurrentDateTime];
 
-      const temp = document.querySelector("#temp");
-      temp.innerHTML = currentTemp;
+      // min/max temperature
+      const maxTemp = document.querySelector("#max-temp");
+      maxTemp.innerHTML = `Max: ${data.daily.temperature_2m_max[indexOfCurrentDate]}\u00B0C`;
+
+      const minTemp = document.querySelector("#min-temp");
+      minTemp.innerHTML = `Min: ${data.daily.temperature_2m_min[indexOfCurrentDate]}\u00B0C`;
+
+
 
       //sunset-time
       const sunsetTime = document.querySelector("#sunset-time");
