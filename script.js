@@ -31,6 +31,28 @@ document.addEventListener("DOMContentLoaded", function () {
       const minTemp = document.querySelector("#min-temp");
       minTemp.innerHTML = `Min: ${data.daily.temperature_2m_min[indexOfCurrentDate]}\u00B0C`;
 
+      // weather info
+      const dayWeatherCode = data.current.weather_code;
+      console.log(dayWeatherCode);
+
+      fetch('wmo-code.json')
+      .then(Response => Response.json())
+      .then(data => {
+        console.log(data);
+        console.log(data[dayWeatherCode].day.description);
+
+        // current weather day/night
+        const dayWeather = document.querySelector("#day-weather");
+        const nightWeather = document.querySelector("#night-weather");
+
+        dayWeather.innerHTML = `Day Weather: ${data[dayWeatherCode].day.description}`;
+        nightWeather.innerHTML = `Night Weather: ${data[dayWeatherCode].night.description}`;
+      })
+      .catch(error => console.error(`Error: ${error}`));
+      const nightWeather = document.querySelector("#night-weather");
+
+
+
 
 
       //sunset-time
