@@ -14,13 +14,20 @@
 
     <section class="row">
         <section class="left-column">
-            <form id="location" class="location">
+            <form id="location-form" class="location">
                 <input autofocus id="location-input" type="text" placeholder="Kathmandu">
-                <button type="submit">Search</button>
+                <button id="form-btn" type="submit">Search</button>
             </form>
             
             <div class="left-column-details">
+
+                <!-- current temp -->
                 <div id="current-temp"></div>
+
+                <!-- current location -->
+                <div id="current-loc"></div>
+
+                <!-- min/max temp -->
                 <div id="max-temp"></div>
                 <div id="min-temp"></div>
                 
