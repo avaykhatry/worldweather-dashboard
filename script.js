@@ -98,6 +98,21 @@ document.addEventListener("DOMContentLoaded", function () {
             // rain info
             // const rainInfo = document.querySelector("#rain");
             // rainInfo.innerHTML = data.current.rain;
+
+            //hourly temp
+            const hourlyTemp = document.querySelector("#hourly-temp");
+            tempArray = data.hourly.temperature_2m;
+
+            document.querySelector("ul").innerHTML = "";
+            for (let i = 0; i < tempArray.length; i++) {
+              console.log(data.hourly.temperature_2m[i]);
+              const hourlyTempData = data.hourly.temperature_2m[i];
+
+              const li = document.createElement("li");
+              li.innerHTML = hourlyTempData;
+              document.querySelector("#hourly-temp").append(li);
+              // document.querySelector('#hourly-temp').appendChild(hourlyTempData);
+            }
           })
           .catch((error) => console.error(`Error: ${error}`));
       })
@@ -200,13 +215,13 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(data.hourly.temperature_2m[i]);
             const hourlyTempData = data.hourly.temperature_2m[i];
 
-            const li = document.createElement('li');
+            const li = document.createElement("li");
             li.innerHTML = hourlyTempData;
             document.querySelector("#hourly-temp").append(li);
             // document.querySelector('#hourly-temp').appendChild(hourlyTempData);
           }
 
-          // hourlyTemp.innerHTML = 
+          // hourlyTemp.innerHTML =
         })
         .catch((error) => console.error(`Error: ${error}`));
     })
