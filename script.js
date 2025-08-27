@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // fetch no. 2
         fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&minutely_15=temperature_2m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
+          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&minutely_15=temperature_2m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
         )
           .then((Response) => {
             if (!Response.ok) throw new Error(`HTTP error: ${Response.status}`);
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // fetch no. 2
       fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&minutely_15=temperature_2m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&minutely_15=temperature_2m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
       )
         .then((Response) => {
           if (!Response.ok) throw new Error(`HTTP error: ${Response.status}`);
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
           tempArray = data.hourly.temperature_2m;
 
           for (let i = 0; i < tempArray.length; i++) {
-            console.log(data.hourly.temperature_2m[i]);
+            // console.log(data.hourly.temperature_2m[i]);
             const hourlyTempData = data.hourly.temperature_2m[i];
 
             const li = document.createElement("li");
@@ -221,7 +221,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // document.querySelector('#hourly-temp').appendChild(hourlyTempData);
           }
 
-          // hourlyTemp.innerHTML =
+          // uv index
+          const uvData = document.querySelector("#uv-data");
+          uvData.innerHTML = data.daily.uv_index_max[0];
+          
         })
         .catch((error) => console.error(`Error: ${error}`));
     })
