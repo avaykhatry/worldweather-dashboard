@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // fetch no. 2
         fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&minutely_15=temperature_2m,wind_speed_10m,wind_direction_10m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
+          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&minutely_15=temperature_2m,wind_speed_10m,wind_direction_10m,visibility&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
         )
           .then((Response) => {
             if (!Response.ok) throw new Error(`HTTP error: ${Response.status}`);
@@ -128,6 +128,11 @@ document.addEventListener("DOMContentLoaded", function () {
               data.minutely_15.wind_direction_10m[indexOfCurrentDateTime];
             windSpeed.innerHTML =
               data.minutely_15.wind_speed_10m[indexOfCurrentDateTime];
+
+            //visibility info
+            const visibilityData = document.querySelector("#visibility");
+            visibilityData.innerHTML =
+              data.minutely_15.visibility[indexOfCurrentDateTime];
           })
           .catch((error) => console.error(`Error: ${error}`));
       })
@@ -154,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // fetch no. 2
       fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,wind_speed_10m&minutely_15=temperature_2m,wind_speed_10m,wind_direction_10m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,wind_speed_10m&minutely_15=temperature_2m,wind_speed_10m,wind_direction_10m,visibility&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
       )
         .then((Response) => {
           if (!Response.ok) throw new Error(`HTTP error: ${Response.status}`);
@@ -250,6 +255,11 @@ document.addEventListener("DOMContentLoaded", function () {
             data.minutely_15.wind_direction_10m[indexOfCurrentDateTime];
           windSpeed.innerHTML =
             data.minutely_15.wind_speed_10m[indexOfCurrentDateTime];
+
+          //visibility info
+          const visibilityData = document.querySelector("#visibility");
+          visibilityData.innerHTML =
+            data.minutely_15.visibility[indexOfCurrentDateTime];
         })
         .catch((error) => console.error(`Error: ${error}`));
     })
