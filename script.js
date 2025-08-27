@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // fetch no. 2
         fetch(
-          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&minutely_15=temperature_2m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
+          `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&minutely_15=temperature_2m,wind_speed_10m,wind_direction_10m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
         )
           .then((Response) => {
             if (!Response.ok) throw new Error(`HTTP error: ${Response.status}`);
@@ -47,7 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const indexOfCurrentDate = data.daily.time.indexOf(currentDate);
             const indexOfCurrentDateTime =
               data.minutely_15.time.indexOf(currentDateTime);
-            console.log(`The index of currentDatae is ${indexOfCurrentDate}`);
+            console.log(
+              `The index of currentDateTime is ${indexOfCurrentDateTime}`
+            );
 
             //current temp
             const currentTemp = document.querySelector("#current-temp");
@@ -113,6 +115,19 @@ document.addEventListener("DOMContentLoaded", function () {
               document.querySelector("#hourly-temp").append(li);
               // document.querySelector('#hourly-temp').appendChild(hourlyTempData);
             }
+
+            // uv index
+            const uvData = document.querySelector("#uv-data");
+            uvData.innerHTML = data.daily.uv_index_max[0];
+
+            // wind status
+            const windDirection = document.querySelector("#wind-direction");
+            const windSpeed = document.querySelector("#wind-speed");
+
+            windDirection.innerHTML =
+              data.minutely_15.wind_direction_10m[indexOfCurrentDateTime];
+            windSpeed.innerHTML =
+              data.minutely_15.wind_speed_10m[indexOfCurrentDateTime];
           })
           .catch((error) => console.error(`Error: ${error}`));
       })
@@ -139,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // fetch no. 2
       fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m&minutely_15=temperature_2m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
+        `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=uv_index_max,sunrise,sunset,temperature_2m_max,temperature_2m_min&hourly=temperature_2m,wind_speed_10m&minutely_15=temperature_2m,wind_speed_10m,wind_direction_10m&current=rain,wind_speed_10m,wind_direction_10m,weather_code&timezone=auto`
       )
         .then((Response) => {
           if (!Response.ok) throw new Error(`HTTP error: ${Response.status}`);
@@ -155,7 +170,9 @@ document.addEventListener("DOMContentLoaded", function () {
           const indexOfCurrentDate = data.daily.time.indexOf(currentDate);
           const indexOfCurrentDateTime =
             data.minutely_15.time.indexOf(currentDateTime);
-          console.log(`The index of currentDatae is ${indexOfCurrentDate}`);
+          console.log(
+            `The index of currentDateTime is ${indexOfCurrentDateTime}`
+          );
 
           //current temp
           const currentTemp = document.querySelector("#current-temp");
@@ -224,7 +241,15 @@ document.addEventListener("DOMContentLoaded", function () {
           // uv index
           const uvData = document.querySelector("#uv-data");
           uvData.innerHTML = data.daily.uv_index_max[0];
-          
+
+          // wind status
+          const windDirection = document.querySelector("#wind-direction");
+          const windSpeed = document.querySelector("#wind-speed");
+
+          windDirection.innerHTML =
+            data.minutely_15.wind_direction_10m[indexOfCurrentDateTime];
+          windSpeed.innerHTML =
+            data.minutely_15.wind_speed_10m[indexOfCurrentDateTime];
         })
         .catch((error) => console.error(`Error: ${error}`));
     })
