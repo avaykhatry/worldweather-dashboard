@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
-
-  // global referece so we can replace it whenever we want
+  // global referece so we can replace it's value whenever we want
   let map;
   let weatherMarker;
 
+  // map function
   function showMap(lat, lon, iconUrl, iconDescription) {
     if (!map) {
       map = L.map("map").setView([lat, lon], 13);
@@ -31,6 +31,20 @@ document.addEventListener("DOMContentLoaded", function () {
       .addTo(map)
       .bindPopup("Weather: " + iconDescription)
       .openPopup();
+  }
+
+  // hourly Temperature Function
+  function hourlyTempFunc(tempArray) {
+    const hourlyTemp = document.querySelector("#hourly-temp");
+
+    document.querySelector("ul").innerHTML = "";
+    for (let i = 0; i < 24; i++) {
+      const hourlyTempData = tempArray[i];
+
+      const li = document.createElement("li");
+      li.innerHTML = hourlyTempData;
+      document.querySelector("#hourly-temp").append(li);
+    }
   }
 
   // function showMap(lat, lon, iconUrl) {
@@ -159,24 +173,9 @@ document.addEventListener("DOMContentLoaded", function () {
               16
             )}`;
 
-            // rain info
-            // const rainInfo = document.querySelector("#rain");
-            // rainInfo.innerHTML = data.current.rain;
-
             //hourly temp
-            const hourlyTemp = document.querySelector("#hourly-temp");
             tempArray = data.hourly.temperature_2m;
-
-            document.querySelector("ul").innerHTML = "";
-            for (let i = 0; i < tempArray.length; i++) {
-              console.log(data.hourly.temperature_2m[i]);
-              const hourlyTempData = data.hourly.temperature_2m[i];
-
-              const li = document.createElement("li");
-              li.innerHTML = hourlyTempData;
-              document.querySelector("#hourly-temp").append(li);
-              // document.querySelector('#hourly-temp').appendChild(hourlyTempData);
-            }
+            hourlyTempFunc(tempArray);
 
             // uv index
             const uvData = document.querySelector("#uv-data");
@@ -292,23 +291,9 @@ document.addEventListener("DOMContentLoaded", function () {
             16
           )}`;
 
-          // rain info
-          // const rainInfo = document.querySelector("#rain");
-          // rainInfo.innerHTML = data.current.rain;
-
           //hourly temp
-          const hourlyTemp = document.querySelector("#hourly-temp");
           tempArray = data.hourly.temperature_2m;
-
-          for (let i = 0; i < tempArray.length; i++) {
-            // console.log(data.hourly.temperature_2m[i]);
-            const hourlyTempData = data.hourly.temperature_2m[i];
-
-            const li = document.createElement("li");
-            li.innerHTML = hourlyTempData;
-            document.querySelector("#hourly-temp").append(li);
-            // document.querySelector('#hourly-temp').appendChild(hourlyTempData);
-          }
+          hourlyTempFunc(tempArray);
 
           // uv index
           const uvData = document.querySelector("#uv-data");
