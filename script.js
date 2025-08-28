@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // hourly Temperature Function
-  function hourlyTempFunc(tempArray) {
+  function hourlyTempFunc(tempArray, newHourArray) {
     const hourlyTemp = document.querySelector("#hourly-temp");
 
     // document.querySelector("ul").innerHTML = "";
@@ -45,30 +45,30 @@ document.addEventListener("DOMContentLoaded", function () {
     //   li.innerHTML = hourlyTempData;
     //   document.querySelector("#hourly-temp").append(li);
     // }
-    const newTempArray = tempArray.slice(0, 24);
-    console.log(newTempArray);
     const ctx = document.getElementById("myChart");
 
-    new Chart(ctx, {
-      type: 'line',
+    newLabels = new Chart(ctx, {
+      type: "line",
       data: {
-        labels: ['1', '2', '3', '4', '5'],
-        datasets: [{
-          label: '# of Votes',
-          data: newTempArray,
-          fill: false,
-          borderColor: 'rgb(1, 1, 1)',
-          tension: 0.1,
-          borderwidth: 1
-        }]
+        labels: newHourArray,
+        datasets: [
+          {
+            label: "Hourly Temperature",
+            data: tempArray,
+            fill: false,
+            borderColor: "rgb(1, 1, 1)",
+            tension: 0.1,
+            // borderwidth: 1,
+          },
+        ],
       },
       options: {
         scales: {
           y: {
-            beginAtZero: true
-          }
-        }
-      }
+            beginAtZero: true,
+          },
+        },
+      },
     });
   }
 
@@ -199,8 +199,15 @@ document.addEventListener("DOMContentLoaded", function () {
             )}`;
 
             //hourly temp
-            tempArray = data.hourly.temperature_2m;
-            hourlyTempFunc(tempArray);
+            tempArray = data.hourly.temperature_2m.slice(0, 24);
+            hourArray = data.hourly.time.slice(0, 24);
+            let newHourArray = [];
+            hourArray.forEach((array) => {
+              const item = array.slice(11);
+              newHourArray.push(item);
+            });
+
+            hourlyTempFunc(tempArray, newHourArray);
 
             // uv index
             const uvData = document.querySelector("#uv-data");
@@ -317,8 +324,15 @@ document.addEventListener("DOMContentLoaded", function () {
           )}`;
 
           //hourly temp
-          tempArray = data.hourly.temperature_2m;
-          hourlyTempFunc(tempArray);
+          tempArray = data.hourly.temperature_2m.slice(0, 24);
+          hourArray = data.hourly.time.slice(0, 24);
+          let newHourArray = [];
+          hourArray.forEach((array) => {
+            const item = array.slice(11);
+            newHourArray.push(item);
+          });
+
+          hourlyTempFunc(tempArray, newHourArray);
 
           // uv index
           const uvData = document.querySelector("#uv-data");

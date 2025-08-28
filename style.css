@@ -69,6 +69,8 @@ body {
     justify-content: center;
 }
 /* left column end */
+
+/* right column start */
 .right-column {
     padding: 1rem;
     background: blueviolet;
@@ -79,7 +81,7 @@ body {
 }
 
 .card {
-    height: 33.33%;
+    flex: 1;
     background: white;
 }
 
@@ -94,21 +96,9 @@ body {
     flex: 1;
 }
 
-/* hourly temp ui start*/
-
 #myChart{
-    
+    width: 100%;
 }
-
-#hourly-temp-container ul{
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    overflow: auto;
-}
-/* hourly temp ui end */
-
-/* right column start */
 
 /* map start */
 #map {
@@ -116,7 +106,18 @@ body {
 }
 /* map end */
 
+/* hourly temp ui start*/
+
+/* #hourly-temp-container ul{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    overflow: auto;
+} */
+/* hourly temp ui end */
+
 /* right column end */
+
 /* footer start*/
 .footer {
     text-align: center;
