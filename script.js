@@ -207,6 +207,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
               dayWeather.innerHTML = `Day: ${data[dayWeatherCode].day.description}`;
               nightWeather.innerHTML = `Night: ${data[dayWeatherCode].night.description}`;
+
+              // map
+              var map = L.map("map").setView([lat, lon], 13);
+
+              
+              L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                maxZoom: 19,
+                attribution:
+                '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+              }).addTo(map);
+
+              // placing the marker with popup
+              const imageUrl = data[dayWeatherCode].day.image;
+              console.log(imageUrl);
+
+              var weatherIcon = L.icon({
+                iconUrl: imageUrl,
+                iconSize: [50, 50],
+                iconAnchor: [25, 50],
+                popupAnchor: [0, -50]
+              });
+              
+              L.marker([lat, lon], {icon: weatherIcon})
+              .addTo(map);
+
             })
             .catch((error) => console.error(`Error: ${error}`));
           const nightWeather = document.querySelector("#night-weather");

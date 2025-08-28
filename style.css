@@ -103,6 +103,16 @@ body {
     overflow: auto;
 }
 /* hourly temp ui end */
+
+/* right column start */
+
+/* map start */
+#map {
+    height: 100%;
+}
+/* map end */
+
+/* right column end */
 /* footer start*/
 .footer {
     text-align: center;
