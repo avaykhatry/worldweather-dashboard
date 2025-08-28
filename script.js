@@ -37,14 +37,39 @@ document.addEventListener("DOMContentLoaded", function () {
   function hourlyTempFunc(tempArray) {
     const hourlyTemp = document.querySelector("#hourly-temp");
 
-    document.querySelector("ul").innerHTML = "";
-    for (let i = 0; i < 24; i++) {
-      const hourlyTempData = tempArray[i];
+    // document.querySelector("ul").innerHTML = "";
+    // for (let i = 0; i < 24; i++) {
+    //   const hourlyTempData = tempArray[i];
 
-      const li = document.createElement("li");
-      li.innerHTML = hourlyTempData;
-      document.querySelector("#hourly-temp").append(li);
-    }
+    //   const li = document.createElement("li");
+    //   li.innerHTML = hourlyTempData;
+    //   document.querySelector("#hourly-temp").append(li);
+    // }
+    const newTempArray = tempArray.slice(0, 24);
+    console.log(newTempArray);
+    const ctx = document.getElementById("myChart");
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['1', '2', '3', '4', '5'],
+        datasets: [{
+          label: '# of Votes',
+          data: newTempArray,
+          fill: false,
+          borderColor: 'rgb(1, 1, 1)',
+          tension: 0.1,
+          borderwidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
   }
 
   // function showMap(lat, lon, iconUrl) {

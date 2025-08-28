@@ -96,6 +96,10 @@ body {
 
 /* hourly temp ui start*/
 
+#myChart{
+    
+}
+
 #hourly-temp-container ul{
     list-style: none;
     display: flex;
