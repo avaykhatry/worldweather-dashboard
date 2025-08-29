@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let map;
   let weatherMarker;
 
-  // map function
+  // map function start
   function showMap(lat, lon, iconUrl, iconDescription) {
     if (!map) {
       map = L.map("map").setView([lat, lon], 13);
@@ -32,19 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
       .bindPopup("Weather: " + iconDescription)
       .openPopup();
   }
+  // map function end
 
-  // hourly Temperature Function
+  // hourly Temperature Function start
   function hourlyTempFunc(tempArray, newHourArray) {
     const hourlyTemp = document.querySelector("#hourly-temp");
-
-    // document.querySelector("ul").innerHTML = "";
-    // for (let i = 0; i < 24; i++) {
-    //   const hourlyTempData = tempArray[i];
-
-    //   const li = document.createElement("li");
-    //   li.innerHTML = hourlyTempData;
-    //   document.querySelector("#hourly-temp").append(li);
-    // }
     const ctx = document.getElementById("myChart");
 
     new Chart(ctx, {
@@ -55,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             label: "Hourly Temperature",
             data: tempArray,
-            backgroundColor: 'lightblue',
-            borderColor: 'hotpink',
+            backgroundColor: "lightblue",
+            borderColor: "hotpink",
             fill: true,
             tension: 0.3,
           },
@@ -67,9 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
         responsive: true,
         plugins: {
           legend: {
-            position: 'top'
-          }
-        },  
+            position: "top",
+          },
+        },
         scales: {
           y: {
             beginAtZero: true,
@@ -78,29 +70,24 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
   }
+  // hourly Temperature Function end
 
-  // function showMap(lat, lon, iconUrl) {
-  //   let map = L.map("map").setView([lat, lon], 13);
-
-  //   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  //     maxZoom: 19,
-  //     attribution:
-  //       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  //   }).addTo(map);
-
-  //   // placing the marker with popup
-
-  //   console.log(iconUrl);
-
-  //   const weatherIcon = L.icon({
-  //     iconUrl: iconUrl,
-  //     iconSize: [50, 50],
-  //     iconAnchor: [25, 50],
-  //     popupAnchor: [0, -50],
-  //   });
-
-  //   L.marker([lat, lon], { icon: weatherIcon }).addTo(map);
-  // }
+  // visibility function start
+  function visibilityFunc(visibilityData) {
+    let visibilityStatus;
+    console.log(visibilityData);
+    if (visibilityData < 1000) {
+      visibilityStatus = `Poor`;
+    } else if (visibilityData >= 1000 && visibilityData < 5000) {
+      visibilityStatus = `Moderate`;
+    } else if (visibilityData >= 5000 && visibilityData < 10000) {
+      visibilityStatus = `Good`;
+    } else {
+      visibilityStatus = `Excellent`;
+    }
+    document.querySelector("#visibility").innerHTML = visibilityStatus;
+  }
+  // visibility function end
 
   if (!localStorage.getItem("locationInput")) {
     localStorage.setItem("locationInput", "kathmandu");
@@ -230,9 +217,9 @@ document.addEventListener("DOMContentLoaded", function () {
               data.minutely_15.wind_speed_10m[indexOfCurrentDateTime];
 
             //visibility info
-            const visibilityData = document.querySelector("#visibility");
-            visibilityData.innerHTML =
+            const visibilityData =
               data.minutely_15.visibility[indexOfCurrentDateTime];
+            visibilityFunc(visibilityData);
           })
           .catch((error) => console.error(`Error: ${error}`));
       })
@@ -355,9 +342,9 @@ document.addEventListener("DOMContentLoaded", function () {
             data.minutely_15.wind_speed_10m[indexOfCurrentDateTime];
 
           //visibility info
-          const visibilityData = document.querySelector("#visibility");
-          visibilityData.innerHTML =
+          const visibilityData =
             data.minutely_15.visibility[indexOfCurrentDateTime];
+          visibilityFunc(visibilityData);
         })
         .catch((error) => console.error(`Error: ${error}`));
     })
