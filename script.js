@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
     const ctx = document.getElementById("myChart");
 
-    newLabels = new Chart(ctx, {
+    new Chart(ctx, {
       type: "line",
       data: {
         labels: newHourArray,
@@ -55,14 +55,21 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             label: "Hourly Temperature",
             data: tempArray,
-            fill: false,
-            borderColor: "rgb(1, 1, 1)",
-            tension: 0.1,
-            // borderwidth: 1,
+            backgroundColor: 'lightblue',
+            borderColor: 'hotpink',
+            fill: true,
+            tension: 0.3,
           },
         ],
       },
       options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top'
+          }
+        },
         scales: {
           y: {
             beginAtZero: true,

@@ -96,15 +96,16 @@ body {
     flex: 1;
 }
 
-#myChart{
-    width: 100%;
-}
-
 /* map start */
 #map {
     height: 100%;
 }
 /* map end */
+
+.canvas{
+    width: 100%;
+}
+
 
 /* hourly temp ui start*/
 
