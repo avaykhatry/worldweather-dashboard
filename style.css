@@ -74,6 +74,7 @@ body {
 .right-column {
     padding: 1rem;
     background: blueviolet;
+    
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -83,6 +84,7 @@ body {
 .card {
     flex: 1;
     background: white;
+    min-height: 200px;
 }
 
 .third-card {
@@ -106,6 +108,9 @@ body {
     width: 100%;
 }
 
+.hourly-temp-card {
+    display: flex;
+}
 
 /* hourly temp ui start*/
 

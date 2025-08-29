@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
           legend: {
             position: 'top'
           }
-        },
+        },  
         scales: {
           y: {
             beginAtZero: true,
