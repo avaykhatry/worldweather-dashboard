@@ -94,6 +94,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // visibility function end
 
+  // uv index start
+  function uvIndexFunc(uvIndexData) {
+    const uvData = document.querySelector("#uv-data");
+    let uvDataStatus;
+    if (uvIndexData < 3) {
+      uvDataStatus = "Low";
+    } else if (uvIndexData >= 3 && uvIndexData < 6) {
+      uvDataStatus = "Moderate";
+    } else if (uvIndexData >= 6 && uvIndexData < 8) {
+      uvDataStatus = "High";
+    } else if (uvIndexData >= 8 && uvIndexData < 11) {
+      uvDataStatus = "Very High";
+    } else {
+      uvDataStatus = "Extreme";
+    }
+    uvData.innerHTML = uvDataStatus;
+  }
+  // uv index end
+
   if (!localStorage.getItem("locationInput")) {
     localStorage.setItem("locationInput", "kathmandu");
   }
@@ -209,8 +228,8 @@ document.addEventListener("DOMContentLoaded", function () {
             hourlyTempFunc(tempArray, newHourArray);
 
             // uv index
-            const uvData = document.querySelector("#uv-data");
-            uvData.innerHTML = data.daily.uv_index_max[0];
+          uvIndexData = data.daily.uv_index_max[0];
+          uvIndexFunc(uvIndexData);
 
             // wind status
             const windDirection = document.querySelector("#wind-direction");
@@ -334,8 +353,8 @@ document.addEventListener("DOMContentLoaded", function () {
           hourlyTempFunc(tempArray, newHourArray);
 
           // uv index
-          const uvData = document.querySelector("#uv-data");
-          uvData.innerHTML = data.daily.uv_index_max[0];
+          uvIndexData = data.daily.uv_index_max[0];
+          uvIndexFunc(uvIndexData);
 
           // wind status
           const windDirection = document.querySelector("#wind-direction");
