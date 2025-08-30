@@ -357,13 +357,17 @@ document.addEventListener("DOMContentLoaded", function () {
           uvIndexFunc(uvIndexData);
 
           // wind status
-          const windDirection = document.querySelector("#wind-direction");
-          const windSpeed = document.querySelector("#wind-speed");
+          const windData = data.minutely_15;
+          function windDataFunc(windData) {
+            const windDirection = document.querySelector("#wind-direction");
+            const windSpeed = document.querySelector("#wind-speed");
+            windDirection.innerHTML =
+            `${windData.wind_direction_10m[indexOfCurrentDateTime]}`;
+            windSpeed.innerHTML =
+            `${windData.wind_speed_10m[indexOfCurrentDateTime]} km/h`;
+          }
 
-          windDirection.innerHTML =
-            data.minutely_15.wind_direction_10m[indexOfCurrentDateTime];
-          windSpeed.innerHTML =
-            data.minutely_15.wind_speed_10m[indexOfCurrentDateTime];
+          windDataFunc(windData)
 
           //visibility info
           const visibilityData =
