@@ -35,11 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // map function end
 
   // hourly Temperature Function start
+  let myLineChart;
   function hourlyTempFunc(tempArray, newHourArray) {
-    const hourlyTemp = document.querySelector("#hourly-temp");
+    // const hourlyTemp = document.querySelector("#hourly-temp");
     const ctx = document.getElementById("myChart");
 
-    new Chart(ctx, {
+    if (myLineChart) {
+      myLineChart.destroy();
+    }
+
+    myLineChart = new Chart(ctx, {
       type: "line",
       data: {
         labels: newHourArray,
