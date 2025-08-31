@@ -1,8 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-    --bg: #e2e2e2;
-    --bg: #010101;
+    --txt-light: #000;
+    --bg-light: #ededed;
+    --pr-light: #370377;
+    --sec-light: #27fce6;
+    --acc-light: #824dff;
+
+    --txt-dark: #fff;
+    --bg-dark: #121212;
+    --pri-dark: #bc88fc;
+    --sec-dark: #03d8c3;
+    --acc-dark: #824dff;
 }
 
 * {
@@ -12,6 +21,7 @@
 }
 
 body {
+    background: var(--bg-light);
   font-family: "Bebas Neue", "Poppins" sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -39,7 +49,6 @@ body {
 
 /* left-column start */
 .left-column {
-    background: blanchedalmond;
     margin: 1rem;
 }
 
@@ -136,22 +145,21 @@ body {
 }
 /* footer end */
 
-/* theme start */
+/* dark theme start */
 body.theme {
-    background: #121212;
-    color: #fff;
+    background: var(--bg-dark);
+    color: var(--txt-dark);
 }
 
 
 body.theme .left-column {
-    background-color: #fff;
-    color: #121212;
+    
 }
 
 /* body.theme .card {
     background: #000000;
 } */
-/* theme end */
+/* dark theme end */
 
 @media screen and (max-width: 760px) {
     .row {

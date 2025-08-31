@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   // classic/noir mode start
   document.querySelector("#theme-btn").addEventListener("click", () => {
     document.querySelector("body").classList.toggle("theme");
-  })
+  });
   // classic/noir mode end
-  
+
   // global referece so we can replace it's value whenever we want
   let map;
   let weatherMarker;
@@ -59,8 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             label: "Hourly Temperature",
             data: tempArray,
-            backgroundColor: "lightblue",
-            borderColor: "hotpink",
+            backgroundColor: "#824dff",
+            borderColor: "#370377",
             fill: true,
             tension: 0.3,
           },
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         responsive: true,
         plugins: {
           legend: {
-            position: "top",
+            position: "bottom",
           },
         },
         scales: {
@@ -129,6 +128,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // wind status end
 
+  // current temperature function start
+  function currentTempFunc(currentTempData) {
+    const currentTemp = document.querySelector("#current-temp");
+    currentTemp.innerHTML = `${currentTempData}\u00B0C`;
+  }
+  // current temperature function end
+
   if (!localStorage.getItem("locationInput")) {
     localStorage.setItem("locationInput", "kathmandu");
   }
@@ -182,9 +188,9 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             //current temp
-            const currentTemp = document.querySelector("#current-temp");
-            currentTemp.innerHTML =
+            const currentTempData =
               data.minutely_15.temperature_2m[indexOfCurrentDateTime];
+            currentTempFunc(currentTempData);
 
             // min/max temperature
             const maxTemp = document.querySelector("#max-temp");
@@ -302,9 +308,9 @@ document.addEventListener("DOMContentLoaded", function () {
           );
 
           //current temp
-          const currentTemp = document.querySelector("#current-temp");
-          currentTemp.innerHTML =
+          const currentTempData =
             data.minutely_15.temperature_2m[indexOfCurrentDateTime];
+          currentTempFunc(currentTempData);
 
           // min/max temperature
           const maxTemp = document.querySelector("#max-temp");
