@@ -113,6 +113,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // uv index end
 
+  // wind status start
+  function windDataFunc(windData, indexOfCurrentDateTime) {
+    const windDirection = document.querySelector("#wind-direction");
+    const windSpeed = document.querySelector("#wind-speed");
+    windDirection.innerHTML = `${windData.wind_direction_10m[indexOfCurrentDateTime]}°`;
+    windSpeed.innerHTML = `${windData.wind_speed_10m[indexOfCurrentDateTime]} km/h`;
+  }
+  // wind status end
+
   if (!localStorage.getItem("locationInput")) {
     localStorage.setItem("locationInput", "kathmandu");
   }
@@ -233,14 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // wind status
             const windData = data.minutely_15;
-            function windDataFunc(windData) {
-              const windDirection = document.querySelector("#wind-direction");
-              const windSpeed = document.querySelector("#wind-speed");
-              windDirection.innerHTML = `${windData.wind_direction_10m[indexOfCurrentDateTime]}°`;
-              windSpeed.innerHTML = `${windData.wind_speed_10m[indexOfCurrentDateTime]} km/h`;
-            }
-
-            windDataFunc(windData);
+            windDataFunc(windData, indexOfCurrentDateTime);
 
             //visibility info
             const visibilityData =
@@ -358,21 +360,14 @@ document.addEventListener("DOMContentLoaded", function () {
           uvIndexData = data.daily.uv_index_max[0];
           uvIndexFunc(uvIndexData);
 
-          // wind status
-          const windData = data.minutely_15;
-          function windDataFunc(windData) {
-            const windDirection = document.querySelector("#wind-direction");
-            const windSpeed = document.querySelector("#wind-speed");
-            windDirection.innerHTML = `${windData.wind_direction_10m[indexOfCurrentDateTime]}°`;
-            windSpeed.innerHTML = `${windData.wind_speed_10m[indexOfCurrentDateTime]} km/h`;
-          }
-
-          windDataFunc(windData);
-
           //visibility info
           const visibilityData =
             data.minutely_15.visibility[indexOfCurrentDateTime];
           visibilityFunc(visibilityData);
+
+          // wind status
+          const windData = data.minutely_15;
+          windDataFunc(windData, indexOfCurrentDateTime);
         })
         .catch((error) => console.error(`Error: ${error}`));
     })
