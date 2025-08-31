@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  // classic/noir mode start
+  document.querySelector("#theme-btn").addEventListener("click", () => {
+    document.querySelector("body").classList.toggle("theme");
+  })
+  // classic/noir mode end
+  
   // global referece so we can replace it's value whenever we want
   let map;
   let weatherMarker;

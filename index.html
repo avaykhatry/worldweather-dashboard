@@ -12,7 +12,7 @@
 <body>
     <section class="header">
         <h2>ClimaTrack</h2>
-        <button>Classic/Noir</button>
+        <button id="theme-btn">Classic/Noir</button>
     </section>
 
     <section class="row">
@@ -53,18 +53,6 @@
             </div>
         </section>
         <section class="right-column">
-            <div class="card">
-                <div id="map"></div>
-            </div>
-            <div class="card hourly-temp-card">
-                <!-- <div id="hourly-temp-container" class="hourly-temp"> -->
-                    <!-- <h2>Hourly Temperature</h2> -->
-                    <!-- <ul id="hourly-temp"></ul> -->
-                    <div class="canvas">
-                        <canvas id="myChart"></canvas>
-                    </div>
-                <!-- </div> -->
-            </div>
             <div class="card third-card">
                 <div class="third-card-inner uv-index">
                     <div class="title">UV Index</div>
@@ -79,6 +67,14 @@
                     <div id="wind-direction"></div>
                     <div id="wind-speed"></div>
                 </div>
+            </div>
+            <div class="card">
+                <div id="map"></div>
+            </div>
+            <div class="card hourly-temp-card">
+                    <div class="canvas">
+                        <canvas id="myChart"></canvas>
+                    </div>
             </div>
         </section>
     </section>

@@ -27,13 +27,12 @@ body {
 .header > h2 {
     margin-right: auto;
 }
+
 /* header end */
 
 /* main start */
 .row {
     min-height: 75vh;
-    background-color: orange;
-
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
@@ -41,6 +40,7 @@ body {
 /* left-column start */
 .left-column {
     background: blanchedalmond;
+    margin: 1rem;
 }
 
 .location {
@@ -76,36 +76,31 @@ body {
 
 /* right column start */
 .right-column {
-    padding: 1px;
-    background: var(--bg);
-    
+    margin: 1rem;
+    gap: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1px;
     overflow: auto;
 }
 
 .card {
     flex: 1;
-    background: white;
     min-height: 200px;
 }
 
 .third-card {
-    background: var(--bg);
     display: flex;
     flex-wrap: wrap;
-    gap: 1px;
+    gap: 1rem;
 }
 
 .third-card-inner {
+    border: 1px solid black;
     min-width: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    background: gray;
     flex: 1;
 }
 
@@ -140,6 +135,23 @@ body {
     text-align: center;
 }
 /* footer end */
+
+/* theme start */
+body.theme {
+    background: #121212;
+    color: #fff;
+}
+
+
+body.theme .left-column {
+    background-color: #fff;
+    color: #121212;
+}
+
+/* body.theme .card {
+    background: #000000;
+} */
+/* theme end */
 
 @media screen and (max-width: 760px) {
     .row {
