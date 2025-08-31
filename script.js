@@ -58,9 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             label: "Hourly Temperature",
             data: tempArray,
-            backgroundColor: "#824dff",
-            borderColor: "#370377",
-            fill: true,
+            borderColor: "#824dff",
+            fill: false,
             tension: 0.3,
           },
         ],

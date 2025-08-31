@@ -1,17 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
-    --txt-light: #000;
-    --bg-light: #ededed;
-    --pr-light: #370377;
-    --sec-light: #27fce6;
-    --acc-light: #824dff;
+  --txt-light: #000;
+  --bg-light: #ededed;
+  --bg-light-2: #fff;
+  --pr-light: #370377;
+  --sec-light: #27fce6;
+  --acc-light: #824dff;
 
-    --txt-dark: #fff;
-    --bg-dark: #121212;
-    --pri-dark: #bc88fc;
-    --sec-dark: #03d8c3;
-    --acc-dark: #824dff;
+  --txt-dark: #fff;
+  --bg-dark-1: #121212;
+  --bg-dark-2: #292929;
+  --pri-dark: #bc88fc;
+  --sec-dark: #03d8c3;
+  --acc-dark: #824dff;
 }
 
 * {
@@ -21,7 +23,8 @@
 }
 
 body {
-    background: var(--bg-light);
+  background: var(--bg-dark-2);
+  color: var(--txt-dark);
   font-family: "Bebas Neue", "Poppins" sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -29,102 +32,107 @@ body {
 
 /* header start */
 .header {
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: flex-end;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .header > h2 {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 /* header end */
 
 /* main start */
 .row {
-    min-height: 75vh;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+  min-height: 75vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
 
 /* left-column start */
 .left-column {
-    margin: 1rem;
+  background: var(--bg-dark-1);
+  margin: 1rem;
 }
 
 .location {
-    padding: 1rem;
-    display: flex;
-    gap: .2rem;
+  padding: 1rem;
+  display: flex;
+  gap: 0.2rem;
 }
 
-.location > input, .location > button {
-    padding: 2px 6px;
+.location > input,
+.location > button {
+  padding: 2px 6px;
 }
 
 .location > input {
-    flex: 3;
+  flex: 3;
 }
 
 .location > button {
-    flex: 1;
+  flex: 1;
 }
 
 .left-column-details {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
 #current-temp {
-    font-size: 2.6rem;
+  font-size: 2.6rem;
 }
 /* left column end */
 
 /* right column start */
 .right-column {
-    margin: 1rem;
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
+  margin: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 
 .card {
-    flex: 1;
-    min-height: 200px;
+  background: var(--bg-dark-1);
+  flex: 1;
+  min-height: 200px;
 }
 
 .third-card {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+  background: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .third-card-inner {
-    border: 1px solid black;
-    min-width: 150px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
+  background: var(--bg-dark-1);
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
 }
 
 /* map start */
 #map {
-    height: 100%;
+  height: 100%;
 }
 /* map end */
 
-.canvas{
-    width: 100%;
+.canvas {
+  background: var(--bg-dark);
+  width: 100%;
 }
 
 .hourly-temp-card {
-    display: flex;
+  display: flex;
 }
 
 /* hourly temp ui start*/
@@ -141,19 +149,29 @@ body {
 
 /* footer start*/
 .footer {
-    text-align: center;
+  text-align: center;
 }
 /* footer end */
 
 /* dark theme start */
 body.theme {
-    background: var(--bg-dark);
-    color: var(--txt-dark);
+  background: var(--bg-light);
+  color: var(--txt-light);
 }
 
-
 body.theme .left-column {
-    
+  background: var(--bg-light-2);
+}
+
+body.theme .card {
+    background: var(--bg-light-2);
+}
+
+body.theme .third-card {
+    background: none;
+}
+body.theme .third-card-inner {
+  background: var(--bg-light-2);
 }
 
 /* body.theme .card {
@@ -162,7 +180,7 @@ body.theme .left-column {
 /* dark theme end */
 
 @media screen and (max-width: 760px) {
-    .row {
-        grid-template-columns: 1fr;
-    }
+  .row {
+    grid-template-columns: 1fr;
+  }
 }
