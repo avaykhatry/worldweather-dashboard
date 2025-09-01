@@ -313,10 +313,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
           // min/max temperature
           const maxTemp = document.querySelector("#max-temp");
-          maxTemp.innerHTML = `<img src="assets/red-triangle-pointed-up-svgrepo-com.svg" width="24px" alt=""> ${data.daily.temperature_2m_max[indexOfCurrentDate]}\u00B0C`;
+          maxTemp.innerHTML = `${data.daily.temperature_2m_max[indexOfCurrentDate]}<sup>\u00B0C</sup>`;
 
           const minTemp = document.querySelector("#min-temp");
-          minTemp.innerHTML = `<img src="assets/red-triangle-pointed-down-svgrepo-com.svg" width="24px" alt=""> ${data.daily.temperature_2m_min[indexOfCurrentDate]}\u00B0C`;
+          minTemp.innerHTML = `${data.daily.temperature_2m_min[indexOfCurrentDate]}<sup>\u00B0C</sup>`;
 
           // weather info
           const dayWeatherCode = data.current.weather_code;
@@ -345,14 +345,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
           //sunset-time
           const sunsetTime = document.querySelector("#sunset-time");
-          sunsetTime.innerHTML = `<img src="assets/sunrise-svgrepo-com.svg" width="28px" alt=""> ${data.daily.sunset[0].slice(
+          sunsetTime.innerHTML = `${data.daily.sunset[0].slice(
             11,
             16
           )}`;
 
           // sunrise time
           const sunriseTime = document.querySelector("#sunrise-time");
-          sunriseTime.innerHTML = `<img src="assets/sunset-svgrepo-com.svg" width="28px" alt=""> ${data.daily.sunrise[0].slice(
+          sunriseTime.innerHTML = `${data.daily.sunrise[0].slice(
             11,
             16
           )}`;
