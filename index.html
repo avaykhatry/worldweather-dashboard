@@ -1,121 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <section class="header">
-        <h2>ClimaTrack</h2>
-        <button id="theme-btn">Classic/Noir</button>
+      <h2>ClimaTrack</h2>
+      <button id="theme-btn">Classic/Noir</button>
     </section>
 
     <section class="row">
-        <section class="left-column">
-            <form id="location-form" class="location">
-                <input autofocus id="location-input" type="text" placeholder="Kathmandu">
-                <button id="form-btn" type="submit"><img src="/assets/search-svgrepo-com.svg" alt=""></button>
-            </form>
-            
-            <div class="left-column-details">
+      <section class="left-column">
+        <form id="location-form" class="location">
+          <input
+            autofocus
+            id="location-input"
+            type="text"
+            placeholder="Kathmandu"
+          />
+          <button id="form-btn" type="submit">
+            <img src="/assets/search-svgrepo-com.svg" alt="" />
+          </button>
+        </form>
 
-                <!-- current temp -->
-                <div id="current-temp"></div>
+        <div class="left-column-details">
+          <!-- current temp -->
+          <div id="current-temp"></div>
 
-                <div class="weather">
-                    <span id="day-weather"></span>
-                    <span id="night-weather"></span>
-                </div>
-                <br />
-               
-                <!-- min/max temp -->
-                 <div class="max-min-temp temp-sun-container">
-                    <div class="min-max-container temp-sun-inner">
-                        <img src="assets/red-triangle-pointed-up-svgrepo-com.svg" width="18px" alt=""> 
-                        <div id="max-temp"></div>
+          <div class="weather">
+            <div id="day-weather"></div>
+            <div id="night-weather"></div>
+          </div>
+          <br />
 
-                    </div>
-                    <div class="min-max-container temp-sun-inner">
-                        <img src="assets/red-triangle-pointed-down-svgrepo-com.svg" width="18px" alt=""> 
-                        <div id="min-temp"></div>
-
-                    </div>
-                 </div>
-                <br />
-               
-                <div class="sunrise-sunset-time temp-sun-container">
-                    <div class="sunrise-container temp-sun-inner">
-                        <div>
-                            <img src="assets/sunrise-svgrepo-com.svg" width="22px" alt="">
-                            <span>sunrise</span>
-                        </div>
-                        <div id="sunrise-time"></div>
-                    </div>
-                    <div class="sunset-container temp-sun-inner">
-                        <div>
-                            <img src="assets/sunset-svgrepo-com.svg" width="22px" alt="">
-                            <span>sunset</span>
-                        </div>
-                        <div id="sunset-time"></div>
-                    </div>
-                </div>
-                <br />
-
-                <!-- current location -->
-                <div id="current-loc"></div>
-
-                
-
-
-                <div id="rain"></div>
-
-                <div id="highest-temp"></div>
-                <div id="lowest-temp"></div>
-                
-                <div id="current-date"></div>
-                <div id="current-time"></div>
-                <div id="current-location"></div>
-                <div id="current-lat"></div>
-                <div id="current-long"></div>
+          <!-- min/max temp -->
+          <div class="max-min-temp temp-sun-container">
+            <div class="min-max-container temp-sun-inner">
+              <img
+                src="assets/red-triangle-pointed-up-svgrepo-com.svg"
+                width="18px"
+                alt=""
+              />
+              <div id="max-temp"></div>
             </div>
-        </section>
-        <section class="right-column">
-            <div class="card third-card">
-                <div class="third-card-inner uv-index">
-                    <div class="title">UV Index</div>
-                    <div class="uv-data" id="uv-data"></div>
-                </div>
-                <div class="third-card-inner air-visibility">
-                    <div class="title">Visibility</div>
-                    <div id="visibility"></div>
-                </div>
-                <div class="third-card-inner wind-status">
-                    <div class="title">Wind Status</div>
-                    <div id="wind-direction"></div>
-                    <div id="wind-speed"></div>
-                </div>
+            <div class="min-max-container temp-sun-inner">
+              <img
+                src="assets/red-triangle-pointed-down-svgrepo-com.svg"
+                width="18px"
+                alt=""
+              />
+              <div id="min-temp"></div>
             </div>
-            <div class="card">
-                <div id="map"></div>
+          </div>
+          <br />
+
+          <div class="sunrise-sunset-time temp-sun-container">
+            <div class="sunrise-container temp-sun-inner">
+              <div>
+                <img src="assets/sunrise-svgrepo-com.svg" width="22px" alt="" />
+                <span>sunrise</span>
+              </div>
+              <div id="sunrise-time"></div>
             </div>
-            <div class="card hourly-temp-card">
-                    <div class="canvas">
-                        <canvas id="myChart"></canvas>
-                    </div>
+            <div class="sunset-container temp-sun-inner">
+              <div>
+                <img src="assets/sunset-svgrepo-com.svg" width="22px" alt="" />
+                <span>sunset</span>
+              </div>
+              <div id="sunset-time"></div>
             </div>
-        </section>
+          </div>
+          <br />
+
+          <!-- current date/time -->
+          <div class="date-time-container">
+            <img
+              src="/assets/calendar-days-svgrepo-com.svg"
+              width="18px"
+              alt=""
+            />
+            <div id="current-date"></div>
+            <div id="current-time"></div>
+          </div>
+          <br />
+          <!-- current location -->
+          <div class="location-container">
+            <img src="/assets/location-svgrepo-com.svg" width="18px" alt="" />
+            <div id="current-loc"></div>
+            <div id="current-lat"></div>
+            <div id="current-long"></div>
+          </div>
+
+          <div id="rain"></div>
+
+          <div id="highest-temp"></div>
+          <div id="lowest-temp"></div>
+
+          <div id="current-location"></div>
+        </div>
+      </section>
+      <section class="right-column">
+        <div class="card third-card">
+          <div class="third-card-inner uv-index">
+            <div class="title">UV Index</div>
+            <div class="uv-data" id="uv-data"></div>
+          </div>
+          <div class="third-card-inner air-visibility">
+            <div class="title">Visibility</div>
+            <div id="visibility"></div>
+          </div>
+          <div class="third-card-inner wind-status">
+            <div class="title">Wind Status</div>
+            <div id="wind-direction"></div>
+            <div id="wind-speed"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div id="map"></div>
+        </div>
+        <div class="card hourly-temp-card">
+          <div class="canvas">
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+      </section>
     </section>
 
     <section class="footer">
-        <span>Licensed by MIT.</span>
+      <span>Licensed by MIT.</span>
     </section>
-    
+
     <script src="/script.js"></script>
-    
-</body>
+  </body>
 </html>

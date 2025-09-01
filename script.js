@@ -147,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector("form").onsubmit = function () {
     locationInput = document.querySelector("#location-input").value;
     console.log(locationInput);
-    document.querySelector("#current-loc").innerHTML = locationInput;
     localStorage.setItem("locationInput", locationInput);
     // fetch no. 1
     fetch(
@@ -159,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then((data) => {
         console.log(data);
+              document.querySelector("#current-loc").innerHTML = `${data.results[0].name}, ${data.results[0].admin1}, ${data.results[0].country}`;
         lat = data.results[0].latitude;
         console.log(`I'm an inner lat ${lat}`);
         lon = data.results[0].longitude;
@@ -193,10 +193,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // min/max temperature
             const maxTemp = document.querySelector("#max-temp");
-            maxTemp.innerHTML = `Max: ${data.daily.temperature_2m_max[indexOfCurrentDate]}\u00B0C`;
+            maxTemp.innerHTML = `${data.daily.temperature_2m_max[indexOfCurrentDate]}\u00B0C`;
 
             const minTemp = document.querySelector("#min-temp");
-            minTemp.innerHTML = `Min: ${data.daily.temperature_2m_min[indexOfCurrentDate]}\u00B0C`;
+            minTemp.innerHTML = `${data.daily.temperature_2m_min[indexOfCurrentDate]}\u00B0C`;
 
             // weather info
             const dayWeatherCode = data.current.weather_code;
@@ -225,14 +225,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //sunset-time
             const sunsetTime = document.querySelector("#sunset-time");
-            sunsetTime.innerHTML = `Sunset: ${data.daily.sunset[0].slice(
+            sunsetTime.innerHTML = `${data.daily.sunset[0].slice(
               11,
               16
             )}`;
 
             // sunrise time
             const sunriseTime = document.querySelector("#sunrise-time");
-            sunriseTime.innerHTML = `Sunrise: ${data.daily.sunrise[0].slice(
+            sunriseTime.innerHTML = `${data.daily.sunrise[0].slice(
               11,
               16
             )}`;
@@ -279,6 +279,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then((data) => {
       console.log(data);
+      document.querySelector("#current-loc").innerHTML = `${data.results[0].name}, ${data.results[0].admin1}, ${data.results[0].country}`;
       let lat = data.results[0].latitude;
       console.log(lat);
       let lon = data.results[0].longitude;

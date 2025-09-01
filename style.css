@@ -134,6 +134,11 @@ body {
   gap: 0.5rem;
 }
 
+.location-container {
+  display: flex;
+  gap: .8rem;
+}
+
 /* left column end */
 
 /* right column start */
