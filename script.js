@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // current temperature function start
   function currentTempFunc(currentTempData) {
     const currentTemp = document.querySelector("#current-temp");
-    currentTemp.innerHTML = `${currentTempData}\u00B0C`;
+    currentTemp.innerHTML = `${currentTempData}<sup>\u00B0C</sup>`;
   }
   // current temperature function end
 

@@ -19,7 +19,7 @@
         <section class="left-column">
             <form id="location-form" class="location">
                 <input autofocus id="location-input" type="text" placeholder="Kathmandu">
-                <button id="form-btn" type="submit">Search</button>
+                <button id="form-btn" type="submit"><img src="/assets/search-svgrepo-com.svg" alt=""></button>
             </form>
             
             <div class="left-column-details">
@@ -27,18 +27,30 @@
                 <!-- current temp -->
                 <div id="current-temp"></div>
 
+                <div class="weather">
+                    <span id="day-weather"></span>
+                    <span id="night-weather"></span>
+                </div>
+                <br />
+               
+                <!-- min/max temp -->
+                 <div class="max-min-temp">
+                     <span id="max-temp"></span>
+                     <span id="min-temp"></span>
+                 </div>
+                <br />
+               
+                <div class="sunrise-sunset-time">
+                    <span id="sunrise-time"></span>
+                    <span id="sunset-time"></span>
+                </div>
+                <br />
+
                 <!-- current location -->
                 <div id="current-loc"></div>
 
-                <!-- min/max temp -->
-                <div id="max-temp"></div>
-                <div id="min-temp"></div>
                 
-                <div id="day-weather"></div>
-                <div id="night-weather"></div>
 
-                <div id="sunrise-time"></div>
-                <div id="sunset-time"></div>
 
                 <div id="rain"></div>
 
