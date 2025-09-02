@@ -48,8 +48,9 @@ body {
 }
 
 #theme-btn {
+  background: #29292930;
   border: none;
-  padding: 4px 10px;
+  padding: 0px 10px;
   border-radius: 1rem;
   box-shadow: var(--box-shadow);
 }
@@ -296,6 +297,9 @@ body.theme .header > h2 {
   color: var(--sec-dark)
 }
 
+body.theme #theme-btn {
+  background: #ededed30;
+}
 /* body.theme #theme-btn {
   background: var(--bg-dark-2);
 } */
