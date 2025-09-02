@@ -41,6 +41,19 @@ body {
   margin-right: auto;
 }
 
+#theme-btn {
+  border: none;
+  padding: 4px 10px;
+  border-radius: 1rem;
+  box-shadow: 2px 2px 10px gray;
+}
+
+#theme-btn .img-day img {
+  background: #03d8c370;
+  border-radius: 10px;
+  padding: 2px;
+}
+
 /* header end */
 
 /* main start */
@@ -175,6 +188,12 @@ body {
   flex: 1;
 }
 
+.third-card-inner .title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 2.8rem;
+}
+
 /* map start */
 #map {
   height: 100%;
@@ -232,6 +251,21 @@ body.theme .third-card-inner {
 body.theme .left-column img {
   filter: none;
 }
+
+body.theme #theme-btn .img-day img{
+  background: none;
+  padding: 0;
+}
+
+body.theme .img-night img{
+    background: #27fce675;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+/* body.theme #theme-btn {
+  background: var(--bg-dark-2);
+} */
 
 /* body.theme .card {
     background: #000000;
