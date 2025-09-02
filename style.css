@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Asimovian&family=Bebas+Neue&family=Bubblegum+Sans&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
   --txt-light: #000;
@@ -14,6 +14,9 @@
   --pri-dark: #bc88fc;
   --sec-dark: #03d8c3;
   --acc-dark: #824dff;
+
+  --border-rad: 1rem;
+  --box-shadow: 2px 2px 10px gray;
 }
 
 * {
@@ -25,7 +28,7 @@
 body {
   background: var(--bg-dark-2);
   color: var(--txt-dark);
-  font-family: "Bebas Neue", "Poppins" sans-serif;
+  font-family: "Asimovian", "Bubblegum Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -38,14 +41,17 @@ body {
 }
 
 .header > h2 {
+  text-shadow: 1px 1px 2px gray;
+  font-size: 2rem;
   margin-right: auto;
+  color: var(--sec-light)
 }
 
 #theme-btn {
   border: none;
   padding: 4px 10px;
   border-radius: 1rem;
-  box-shadow: 2px 2px 10px gray;
+  box-shadow: var(--box-shadow);
 }
 
 #theme-btn .img-day img {
@@ -65,6 +71,7 @@ body {
 
 /* left-column start */
 .left-column {
+  border-radius: var(--border-rad);
   background: var(--bg-dark-1);
   margin: 1rem;
 }
@@ -87,13 +94,22 @@ body {
 }
 
 .location > input {
+  /* border-top-left-radius: var(--border-rad); */
+  border-bottom-left-radius: var(--border-rad);
   padding: 2px 6px;
-  border: 1px solid var(--bg-dark-1);
+  border: 0;
+  background: var(--bg-dark-2);
   flex: 4;
   border-right: none;
+  color: var(--bg-light);
+}
+
+#location-input:focus-visible {
+  outline: 0;
 }
 
 .location > button {
+  border-top-right-radius: var(--border-rad);
   border: none;
   max-width: 40px;
   min-height: 40px;
@@ -166,9 +182,11 @@ body {
 }
 
 .card {
+  border-radius: var(--border-rad);
   background: var(--bg-dark-1);
   flex: 1;
   min-height: 200px;
+
 }
 
 .third-card {
@@ -179,6 +197,8 @@ body {
 }
 
 .third-card-inner {
+  border-radius: var(--border-rad);
+
   background: var(--bg-dark-1);
   min-width: 150px;
   display: flex;
@@ -196,6 +216,7 @@ body {
 
 /* map start */
 #map {
+  border-radius: var(--border-rad);
   height: 100%;
 }
 /* map end */
@@ -206,7 +227,10 @@ body {
 }
 
 .hourly-temp-card {
+  
   display: flex;
+  border-radius: var(--border-rad);
+  padding: .5rem;
 }
 
 /* hourly temp ui start*/
@@ -261,6 +285,15 @@ body.theme .img-night img{
     background: #27fce675;
   border-radius: 10px;
   padding: 2px;
+}
+
+body.theme .location > input {
+  background: var(--bg-light);
+  color: var(--bg-dark-2);
+}
+
+body.theme .header > h2 {
+  color: var(--sec-dark)
 }
 
 /* body.theme #theme-btn {
