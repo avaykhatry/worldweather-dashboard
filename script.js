@@ -134,6 +134,74 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   // current temperature function end
 
+  // current datetimefunction start
+  function currentDateTimeFunc(lat, lon) {
+        fetch(
+        `https://timeapi.io/api/time/current/coordinate?latitude=${lat}&longitude=${lon}`
+      )
+        .then((Response) => Response.json())
+        .then((data) => {
+          console.log(data);
+          const weekDay = data.dayOfWeek.slice(0, 3);
+          const locationDateTime = data.dateTime;
+          // .slice(0, 10);
+          // console.log(locationDate);
+          // const locationTime = data.datetime.slice(11, 16);
+          // console.log(locationTime);
+          const monthData = data.dateTime.slice(6, 7);
+
+          function dayFunc(weekDay, monthData, locationDateTime) {
+            // let weekDayStatus;
+            let monthStatus;
+            // console.log(`monthdata: ${monthData}`);
+            // if (weekDay === 1) {
+            //   weekDayStatus = "Mon";
+            // } else if (weekDay === 2) {
+            //   weekDayStatus = "Tue";
+            // } else if (weekDay === 3) {
+            //   weekDayStatus = "Wed";
+            // } else if (weekDay === 4) {
+            //   weekDayStatus = "Thu";
+            // } else if (weekDay === 5) {
+            //   weekDayStatus = "Fri";
+            // } else if (weekDay === 6) {
+            //   weekDayStatus = "Sat";
+            // } else {
+            //   weekDayStatus = "Sun";
+            // }
+
+            const months = [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ];
+            monthStatus = months[monthData - 1] || "Invalid";
+
+            document.querySelector(
+              "#current-date"
+            ).innerHTML = `${weekDay}, ${monthStatus} ${locationDateTime.slice(
+              8,
+              10
+            )}, ${locationDateTime.slice(0, 4)} ${locationDateTime.slice(
+              11,
+              16
+            )}`;
+          }
+          dayFunc(weekDay, monthData, locationDateTime);
+        })
+        .catch((error) => console.error(`Error: ${error}`));
+      }
+  // current datetimefunction end
+
   if (!localStorage.getItem("locationInput")) {
     localStorage.setItem("locationInput", "kathmandu");
   }
@@ -165,6 +233,9 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(`I'm an inner lat ${lat}`);
         lon = data.results[0].longitude;
         console.log(lon);
+
+          // current datetime func
+      currentDateTimeFunc(lat, lon)
 
         // fetch no. 2
         fetch(
@@ -289,69 +360,8 @@ document.addEventListener("DOMContentLoaded", function () {
       let lon = data.results[0].longitude;
       console.log(lon);
 
-      fetch(
-        `https://timeapi.io/api/time/current/coordinate?latitude=${lat}&longitude=${lon}`
-      )
-        .then((Response) => Response.json())
-        .then((data) => {
-          console.log(data);
-          const weekDay = data.dayOfWeek.slice(0, 3);
-          const locationDateTime = data.dateTime;
-          // .slice(0, 10);
-          // console.log(locationDate);
-          // const locationTime = data.datetime.slice(11, 16);
-          // console.log(locationTime);
-          const monthData = data.dateTime.slice(6, 7);
-
-          function dayFunc(weekDay, monthData, locationDateTime) {
-            // let weekDayStatus;
-            let monthStatus;
-            // console.log(`monthdata: ${monthData}`);
-            // if (weekDay === 1) {
-            //   weekDayStatus = "Mon";
-            // } else if (weekDay === 2) {
-            //   weekDayStatus = "Tue";
-            // } else if (weekDay === 3) {
-            //   weekDayStatus = "Wed";
-            // } else if (weekDay === 4) {
-            //   weekDayStatus = "Thu";
-            // } else if (weekDay === 5) {
-            //   weekDayStatus = "Fri";
-            // } else if (weekDay === 6) {
-            //   weekDayStatus = "Sat";
-            // } else {
-            //   weekDayStatus = "Sun";
-            // }
-
-            const months = [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ];
-            monthStatus = months[monthData - 1] || "Invalid";
-
-            document.querySelector(
-              "#current-date"
-            ).innerHTML = `${weekDay}, ${monthStatus} ${locationDateTime.slice(
-              8,
-              10
-            )}, ${locationDateTime.slice(0, 4)} ${locationDateTime.slice(
-              11,
-              16
-            )}`;
-          }
-          dayFunc(weekDay, monthData, locationDateTime);
-        })
-        .catch((error) => console.error(`Error: ${error}`));
+      // current datetime func
+      currentDateTimeFunc(lat, lon)
 
       // fetch no. 2
       fetch(

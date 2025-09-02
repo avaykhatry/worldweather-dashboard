@@ -260,6 +260,15 @@ body {
 .footer {
   text-align: center;
 }
+
+.footer p a {
+  text-decoration: none;
+  color: var(--bg-light);
+}
+
+.footer p a:hover {
+  color: var(--acc-dark);
+}
 /* footer end */
 
 /* dark theme start */
@@ -312,6 +321,13 @@ body.theme .header > h2:hover {
 body.theme #theme-btn {
   background: #ededed30;
 }
+
+body.theme .footer p a {
+  color: var(--bg-dark-2);
+}
+body.theme .footer p a:hover {
+  color: var(--acc-light);
+}
 /* body.theme #theme-btn {
   background: var(--bg-dark-2);
 } */
@@ -324,5 +340,27 @@ body.theme #theme-btn {
 @media screen and (max-width: 760px) {
   .row {
     grid-template-columns: 1fr;
+  }
+
+  .header > h2 {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header > h2 {
+    font-size: 2rem;
+  }
+  
+  #theme-btn {
+    padding: 0px 6px;
+  }
+
+  .right-column {
+    gap: 2.2rem;
+  }
+
+  .third-card {
+    gap: .5rem;
   }
 }
