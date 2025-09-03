@@ -77,6 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
             beginAtZero: true,
           },
         },
+        animation: {
+          duration: 1000,
+          easing: 'easeInOutQuart',
+        },
       },
     });
   }
@@ -151,25 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const monthData = data.dateTime.slice(6, 7);
 
           function dayFunc(weekDay, monthData, locationDateTime) {
-            // let weekDayStatus;
             let monthStatus;
-            // console.log(`monthdata: ${monthData}`);
-            // if (weekDay === 1) {
-            //   weekDayStatus = "Mon";
-            // } else if (weekDay === 2) {
-            //   weekDayStatus = "Tue";
-            // } else if (weekDay === 3) {
-            //   weekDayStatus = "Wed";
-            // } else if (weekDay === 4) {
-            //   weekDayStatus = "Thu";
-            // } else if (weekDay === 5) {
-            //   weekDayStatus = "Fri";
-            // } else if (weekDay === 6) {
-            //   weekDayStatus = "Sat";
-            // } else {
-            //   weekDayStatus = "Sun";
-            // }
-
             const months = [
               "Jan",
               "Feb",

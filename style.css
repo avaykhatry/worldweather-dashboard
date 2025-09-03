@@ -16,7 +16,7 @@
   --acc-dark: #824dff;
 
   --border-rad: 1rem;
-  --box-shadow: 2px 2px 10px gray;
+  --box-shadow: 0px 2px 6px rgba(10, 10, 10, 0.5);
 }
 
 * {
@@ -31,6 +31,7 @@ body {
   font-family: "Asimovian", "Bubblegum Sans", sans-serif;
   font-weight: 400;
   font-style: normal;
+  transition: all 0.4s ease, color 0.4s ease;
 }
 
 /* header start */
@@ -57,7 +58,7 @@ body {
 }
 
 #theme-btn {
-  background: #29292930;
+  background: var(--bg-dark-1);
   border: none;
   padding: 0px 10px;
   border-radius: 1rem;
@@ -69,6 +70,11 @@ body {
   background:  var(--acc-dark);
   border-radius: 10px;
   padding: 2px;
+  margin-right: .4rem;
+}
+
+#theme-btn .img-night img {
+  filter: invert(1);
 }
 
 /* header end */
@@ -197,8 +203,14 @@ body {
   background: var(--bg-dark-1);
   flex: 1;
   min-height: 200px;
-
+  
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
 }
+
+/* .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+} */
 
 .third-card {
   background: none;
@@ -259,6 +271,7 @@ body {
 /* footer start*/
 .footer {
   text-align: center;
+  padding: 5rem;
 }
 
 .footer p a {
@@ -301,10 +314,11 @@ body.theme #theme-btn .img-day img{
   padding: 0;
 }
 
-body.theme .img-night img{
+body.theme #theme-btn .img-night img{
     background: var(--acc-light);
   border-radius: 10px;
   padding: 2px;
+  filter: none;
 }
 
 body.theme .location > input {
@@ -362,5 +376,25 @@ body.theme .footer p a:hover {
 
   .third-card {
     gap: .5rem;
+  }
+
+  #theme-btn .img-day img {
+    margin-right: .2rem;
+  }
+
+  .third-card-inner {
+    font-size: 0.8rem;
+  }
+
+  .third-card-inner .title {
+    font-size: 1.1rem;
+    line-height: normal;
+  }
+
+}
+
+@media screen and (max-width: 300px) {
+  #theme-btn .img-day img {
+    margin: 0;
   }
 }
