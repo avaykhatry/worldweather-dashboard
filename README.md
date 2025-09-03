@@ -8,7 +8,7 @@ This is a fully functional weather dashboard built with vanilla HTML, CSS, and J
 ---
 
 ## Preview 
-![preview](assets/Screenshot 2025-09-03 at 10.19.27.png)
+![preview](assets/dashboard-thumbnail.png)
 
 ---
 
@@ -21,8 +21,8 @@ This is a fully functional weather dashboard built with vanilla HTML, CSS, and J
 ---
 
 ## Tech Stack
-    1. **HTML5**
-    2. **CSS3**
-    3. **JavaScript (ES6)**
-    4. [Open-Meteo](https://open-meteo.com/) - Weather API 
-    5. [TimeAPI](https://timeapi.io) - Time data
+- **HTML5**
+- **CSS3**
+- **JavaScript (ES6)**
+- [Open-Meteo](https://open-meteo.com/) - Weather API 
+- [TimeAPI](https://timeapi.io) - Time data
