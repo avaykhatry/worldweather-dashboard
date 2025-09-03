@@ -78,6 +78,10 @@ body {
   filter: invert(1);
 }
 
+#theme-btn:focus-visible {
+  outline: none;
+}
+
 /* header end */
 
 /* main start */
